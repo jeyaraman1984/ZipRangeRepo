@@ -4,12 +4,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
-
+/**
+ * Normalize the Zip Code range.
+ * 
+ * @author Jeyaraman Govindaraj
+ *
+ */
 public class ZipRange {
 
-	static Logger log = Logger.getLogger(ZipRange.class);
 
 	static Long MIN_ZIP_RANGE = 10000L;
 	static Long MAX_ZIP_RANGE = 99999L;
@@ -21,7 +23,6 @@ public class ZipRange {
 	 * @return result of sorted/normalized zip ragne
 	 */
 	public int[][] normalizeZipCodeRanges(int[][] inputZips) {
-		BasicConfigurator.configure();
 
 		
 		// Validate the inputs
@@ -59,8 +60,8 @@ public class ZipRange {
 
 				// Checking the range of the zip code
 				if (inputZips[i][j] < MIN_ZIP_RANGE || inputZips[i][j] > MAX_ZIP_RANGE) {
-					log.error("Invalid input. Zipcode length must be 5 digit number");
-					log.error("Please check input zip code values");
+					System.out.println("INVALID INPUT : Inconsistent Data ==> [" + inputZips[i][0] + ", " + inputZips[i][1] + "]");
+					System.out.println("Please correct the data and Re-run the process");
 					System.exit(0);
 				}
 			}
